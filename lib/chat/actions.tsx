@@ -634,7 +634,7 @@ Redirect to education: "I can't tell you what to invest in, but I can teach you 
         showStockScreener: {
           description:
             'This tool shows a generic stock screener which can be used to find new stocks based on financial or technical parameters.',
-          parameters: z.object({}),
+          parameters: z.object({}).optional(),
           generate: async function* ({}) {
             const toolCallId = nanoid()
 
