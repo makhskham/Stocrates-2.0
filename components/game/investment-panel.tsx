@@ -21,6 +21,18 @@ export function InvestmentPanel() {
   const [amount, setAmount] = useState<string>('')
   const [error, setError] = useState<string>('')
 
+  // Validate amount as user types
+  const handleAmountChange = (value: string) => {
+    setAmount(value)
+    const investAmount = parseFloat(value)
+    
+    if (value && !isNaN(investAmount) && investAmount > gameState.stockratesPoints) {
+      setError(`Insufficient points. You have ${gameState.stockratesPoints.toLocaleString()} points available.`)
+    } else {
+      setError('')
+    }
+  }
+
   // Mock price - in real implementation, fetch from API based on selectedDate
   const getCurrentPrice = (symbol: string): number => {
     const mockPrices: Record<string, number> = {
@@ -125,9 +137,8 @@ export function InvestmentPanel() {
             type="number"
             placeholder="Enter amount..."
             value={amount}
-            onChange={(e) => setAmount(e.target.value)}
+            onChange={(e) => handleAmountChange(e.target.value)}
             min="0"
-            max={gameState.stockratesPoints}
             className="mt-1"
           />
           <p className="text-xs text-muted-foreground mt-1">
@@ -156,7 +167,7 @@ export function InvestmentPanel() {
         <Button
           onClick={handleInvest}
           className="w-full"
-          disabled={!selectedStock || !amount || parseFloat(amount) <= 0}
+          disabled={!selectedStock || !amount || parseFloat(amount) <= 0 || !!error}
         >
           🚀 Invest Now
         </Button>
