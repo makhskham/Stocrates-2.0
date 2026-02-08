@@ -3,8 +3,8 @@
 import React from 'react'
 import { useGame } from '@/lib/game/game-context'
 import { cn } from '@/lib/utils'
-import { Button } from '@/components/ui/button'
-import { X, ChevronLeft, ChevronRight } from 'lucide-react'
+import { StocratesButton } from '@/components/ui/stocrates-button'
+import { X } from 'lucide-react'
 import { TimeMachine } from './time-machine'
 import { InvestmentPanel } from './investment-panel'
 import { PortfolioView } from './portfolio-view'
@@ -27,44 +27,55 @@ export function GameSidebar() {
       {/* Sidebar */}
       <div
         className={cn(
-          'fixed left-0 top-0 h-full w-full bg-background shadow-2xl z-50 transition-transform duration-300 ease-in-out overflow-y-auto',
+          'fixed left-0 top-0 h-full w-full bg-stocrates-cream shadow-2xl z-50 transition-transform duration-300 ease-in-out overflow-y-auto',
           isGameOpen ? 'translate-x-0' : '-translate-x-full'
         )}
       >
         {/* Header */}
-        <div className="sticky top-0 bg-background border-b p-4 flex items-center justify-between z-10">
-          <div className="flex items-center gap-2">
-            <div className="text-2xl">🎮</div>
+        <div className="sticky top-0 bg-stocrates-cream border-b-3 border-stocrates-dark p-6 flex items-center justify-between z-10">
+          <div className="flex items-center gap-3">
+            <div className="text-3xl">🎮</div>
             <div>
-              <h2 className="text-xl font-bold">Investment Game</h2>
-              <p className="text-xs text-muted-foreground">Learn by practicing!</p>
+              <h2 className="font-title text-2xl font-bold text-stocrates-dark">Investment Game</h2>
+              <p className="font-body text-sm text-stocrates-dark-blue">Learn by practicing!</p>
             </div>
           </div>
-          <Button variant="ghost" size="icon" onClick={closeGame}>
+          <button
+            onClick={closeGame}
+            className="w-10 h-10 rounded-full bg-stocrates-dark text-stocrates-cream hover:bg-stocrates-dark-blue transition-colors flex items-center justify-center"
+          >
             <X className="h-5 w-5" />
-          </Button>
+          </button>
         </div>
 
-        {/* Stockrates Points Display */}
-        <div className="p-4 bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-950/30 dark:to-emerald-950/30 border-b">
-          <div className="flex items-center justify-between">
-            <div>
-              <p className="text-sm text-muted-foreground">Available Points</p>
-              <p className="text-3xl font-bold text-green-600 dark:text-green-400">
-                {gameState.stockratesPoints.toLocaleString()}
-              </p>
+        {/* Stocrates Points Display - Game-y Design */}
+        <div className="p-6 bg-stocrates-blue border-b-3 border-stocrates-dark">
+          <div className="relative border-3 border-stocrates-dark bg-stocrates-cream p-6">
+            {/* Decorative corners */}
+            <div className="absolute w-3 h-3 rounded-full border-3 border-stocrates-dark bg-stocrates-blue -top-1.5 -left-1.5" />
+            <div className="absolute w-3 h-3 rounded-full border-3 border-stocrates-dark bg-stocrates-blue -top-1.5 -right-1.5" />
+            <div className="absolute w-3 h-3 rounded-full border-3 border-stocrates-dark bg-stocrates-blue -bottom-1.5 -left-1.5" />
+            <div className="absolute w-3 h-3 rounded-full border-3 border-stocrates-dark bg-stocrates-blue -bottom-1.5 -right-1.5" />
+
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="font-body text-sm text-stocrates-dark-blue uppercase tracking-wide">Available Points</p>
+                <p className="font-game text-4xl font-bold text-stocrates-dark mt-1">
+                  {gameState.stockratesPoints.toLocaleString()}
+                </p>
+              </div>
+              <div className="text-5xl">💰</div>
             </div>
-            <div className="text-5xl">💰</div>
+            <div className="mt-4 h-3 bg-stocrates-gray border-2 border-stocrates-dark rounded-full overflow-hidden">
+              <div
+                className="h-full bg-stocrates-dark-blue transition-all duration-300"
+                style={{ width: `${Math.min((gameState.stockratesPoints / 10000) * 100, 100)}%` }}
+              />
+            </div>
+            <p className="font-body text-xs text-stocrates-dark-blue mt-2 text-center">
+              {gameState.stockratesPoints} / 10,000 Stocrates Points
+            </p>
           </div>
-          <div className="mt-2 h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
-            <div
-              className="h-full bg-gradient-to-r from-green-500 to-emerald-500 transition-all duration-300"
-              style={{ width: `${(gameState.stockratesPoints / 10000) * 100}%` }}
-            />
-          </div>
-          <p className="text-xs text-muted-foreground mt-1">
-            {gameState.stockratesPoints} / 10,000 Stockrates Points
-          </p>
         </div>
 
         {/* Main Content */}

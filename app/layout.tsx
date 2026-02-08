@@ -16,11 +16,11 @@ export const metadata = {
     ? new URL(`https://${process.env.VERCEL_URL}`)
     : undefined,
   title: {
-    default: 'TradeWise',
-    template: `%s - TradeWise powered by llama-3.1-70b`,
+    default: 'Stocrates - Learn Markets Through the Socratic Method',
+    template: `%s - Stocrates`,
   },
   description:
-    'Lightning Fast AI Chatbot that Responds With Live Interactive Stock Charts, Financials, News, Screeners, and More.',
+    'Educational AI-powered financial literacy platform combining stock market analysis with the Socratic Method. Learn through historical patterns, not predictions.',
   icons: {
     icon: '/favicon.ico',
     shortcut: '/favicon-16x16.png',
