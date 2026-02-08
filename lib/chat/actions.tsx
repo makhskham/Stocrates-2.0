@@ -988,15 +988,13 @@ Redirect to education: "I can't tell you what to invest in, but I can teach you 
       display: result.value
     }
   } catch (err: any) {
-    // Enhanced error handling for both OpenAI and Groq
+    // Enhanced error handling for Groq
     let errorMessage = err.message || 'An unknown error occurred'
-    
-    if (err.message?.includes('Groq API key is missing') || err.message?.includes('GROQ_API_KEY')) {
+
+    if (err.message?.includes('Groq API key is missing') || err.message?.includes('GROQ_API_KEY') || !GROQ_API_KEY_ENV) {
       errorMessage = 'Groq API key is missing. Pass it using the GROQ_API_KEY environment variable.'
-    } else if (err.message?.includes('OPENAI_API_KEY') || !OPENAI_API_KEY) {
-      errorMessage = 'OpenAI API key is missing or invalid. Check your OPENAI_API_KEY in .env.local file.'
     } else if (err.message?.includes('API key')) {
-      errorMessage = `API Authentication Error: ${err.message}. Please verify your OPENAI_API_KEY is correct.`
+      errorMessage = `API Authentication Error: ${err.message}. Please verify your GROQ_API_KEY is correct.`
     } else if (err.message?.includes('Rate limit') || err.message?.includes('quota')) {
       errorMessage = `Rate Limit Error: ${err.message}`
     }
@@ -1014,9 +1012,9 @@ Redirect to education: "I can't tell you what to invest in, but I can teach you 
           <div className="text-sm text-gray-600 mt-2">
             💡 Quick fixes:
             <ul className="list-disc ml-5 mt-1">
-              <li>Verify your OPENAI_API_KEY in .env.local is correct</li>
+              <li>Verify your GROQ_API_KEY in .env.local is correct</li>
               <li>Restart the dev server after changing .env.local</li>
-              <li>Check if your OpenAI account has credits: https://platform.openai.com/usage</li>
+              <li>Check if your Groq account has credits: https://console.groq.com/</li>
             </ul>
           </div>
           <a
