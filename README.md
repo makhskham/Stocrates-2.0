@@ -95,6 +95,7 @@ An educational AI-powered financial literacy platform that teaches beginners how
   - **Groq API Key** - Get it at [console.groq.com](https://console.groq.com)
   - **NewsAPI Key** - Get it at [newsapi.org](https://newsapi.org)
   - **Finnhub API Key** - Get it at [finnhub.io](https://finnhub.io)
+  - **Polygon API Key** - Get it at [polygon.io](https://massive.com/)
 
 ### Installation
 
