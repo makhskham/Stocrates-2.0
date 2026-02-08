@@ -6,11 +6,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 
 interface EventInputProps {
-<<<<<<< HEAD
-  onAnalyze: (pattern: string, eventType?: string) => void
-=======
   onAnalyze: (pattern?: string, eventType?: string) => void
->>>>>>> sura-branch
   isLoading: boolean
 }
 
@@ -39,23 +35,15 @@ export function EventInput({ onAnalyze, isLoading }: EventInputProps) {
   ]
 
   const handleAnalyze = () => {
-<<<<<<< HEAD
-    if (selectedPattern || selectedEventType) {
-      onAnalyze(selectedPattern, selectedEventType)
-    }
-=======
-    // Pass empty strings as undefined to avoid sending empty query params
     const pattern = selectedPattern || undefined
     const eventType = selectedEventType || undefined
     onAnalyze(pattern, eventType)
   }
 
   const handleShowAll = () => {
-    // Clear selections and show all events
     setSelectedPattern('')
     setSelectedEventType('')
     onAnalyze(undefined, undefined)
->>>>>>> sura-branch
   }
 
   return (
@@ -67,20 +55,12 @@ export function EventInput({ onAnalyze, isLoading }: EventInputProps) {
         </CardDescription>
       </CardHeader>
       <CardContent className="space-y-4">
-<<<<<<< HEAD
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-=======
         <div className="grid grid-cols-1 gap-4">
->>>>>>> sura-branch
           <div className="space-y-2">
             <label className="text-sm font-medium">Technical Pattern (Optional)</label>
             <Select value={selectedPattern} onValueChange={setSelectedPattern}>
               <SelectTrigger className="w-full">
-<<<<<<< HEAD
-                <SelectValue placeholder="Choose a pattern..." />
-=======
                 <SelectValue placeholder="All patterns..." />
->>>>>>> sura-branch
               </SelectTrigger>
               <SelectContent>
                 {patterns.map((pattern) => (
@@ -99,11 +79,7 @@ export function EventInput({ onAnalyze, isLoading }: EventInputProps) {
             <label className="text-sm font-medium">Event Category (Optional)</label>
             <Select value={selectedEventType} onValueChange={setSelectedEventType}>
               <SelectTrigger className="w-full">
-<<<<<<< HEAD
-                <SelectValue placeholder="Choose an event type..." />
-=======
                 <SelectValue placeholder="All event types..." />
->>>>>>> sura-branch
               </SelectTrigger>
               <SelectContent>
                 {eventTypes.map((event) => (
@@ -119,90 +95,17 @@ export function EventInput({ onAnalyze, isLoading }: EventInputProps) {
           </div>
         </div>
 
-        {/* Clear filters button */}
-        {(selectedPattern || selectedEventType) && (
-          <Button
-            onClick={() => {
-              setSelectedPattern('')
-              setSelectedEventType('')
-            }}
-            variant="outline"
-            size="sm"
-            className="w-full"
-          >
-            Clear Filters
-          </Button>
-        )}
-
-        <div className="p-4 bg-blue-50 dark:bg-blue-950 rounded-lg border border-blue-200 dark:border-blue-800">
-          <p className="text-sm text-blue-900 dark:text-blue-100">
-            <strong>💡 Learning Note:</strong> Filter by technical patterns (breakout, head & shoulders)
-<<<<<<< HEAD
-            and/or event categories (earnings, mergers, FDA approvals). This shows you how markets{' '}
-            <em>historically reacted</em> to similar situations.
-          </p>
-        </div>
-
-        <Button
-          onClick={handleAnalyze}
-          disabled={(!selectedPattern && !selectedEventType) || isLoading}
-          className="w-full"
-          size="lg"
-        >
-          {isLoading ? (
-            <>
-              <span className="mr-2">⏳</span>
-              Analyzing Historical Data...
-            </>
-          ) : (
-            <>
-              <span className="mr-2">🔍</span>
-              Analyze Pattern
-            </>
-          )}
-        </Button>
-=======
-            and/or event categories (earnings, mergers, FDA approvals). Leave blank to see all events.
-          </p>
-        </div>
-
         <div className="grid grid-cols-2 gap-3">
-          <Button
-            onClick={handleAnalyze}
-            disabled={isLoading}
-            className="w-full"
-            size="lg"
-          >
-            {isLoading ? (
-              <>
-                <span className="mr-2">⏳</span>
-                Analyzing...
-              </>
-            ) : (
-              <>
-                <span className="mr-2">🔍</span>
-                Analyze
-              </>
-            )}
+          <Button onClick={handleAnalyze} disabled={isLoading} className="w-full" size="lg">
+            {isLoading ? <>⏳ Analyzing...</> : <>🔍 Analyze</>}
           </Button>
 
-          <Button
-            onClick={handleShowAll}
-            disabled={isLoading}
-            variant="outline"
-            className="w-full"
-            size="lg"
-          >
-            <span className="mr-2">📊</span>
-            Show All
+          <Button onClick={handleShowAll} disabled={isLoading} variant="outline" className="w-full" size="lg">
+            📊 Show All
           </Button>
-        </div>
->>>>>>> sura-branch
-
-        <div className="text-xs text-muted-foreground text-center">
-          ⚠️ Educational purposes only • Not financial advice
         </div>
       </CardContent>
     </Card>
   )
 }
+
