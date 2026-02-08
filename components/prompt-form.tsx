@@ -57,14 +57,16 @@ export function PromptForm({
         const responseMessage = await submitUserMessage(value, apiKey)
         setMessages(currentMessages => [...currentMessages, responseMessage])
       }}
+      suppressHydrationWarning
     >
-      <div className="relative flex max-h-60 w-full grow flex-col overflow-hidden bg-white border-3 border-stocrates-dark px-12 sm:rounded-full sm:px-12 shadow-md">
+      <div className="relative flex max-h-60 w-full grow flex-col overflow-hidden bg-white border-3 border-stocrates-dark px-12 sm:rounded-full sm:px-12 shadow-md" suppressHydrationWarning>
         <button
           type="button"
           className="absolute left-4 top-[14px] size-8 rounded-full bg-stocrates-dark text-stocrates-cream hover:bg-stocrates-dark-blue transition-colors flex items-center justify-center p-0 sm:left-4"
           onClick={() => {
             router.push('/new')
           }}
+          suppressHydrationWarning
         >
           <IconPlus />
           <span className="sr-only">New Chat</span>
@@ -84,13 +86,14 @@ export function PromptForm({
           value={input}
           onChange={e => setInput(e.target.value)}
         />
-        <div className="absolute right-4 top-[13px] sm:right-4">
+        <div className="absolute right-4 top-[13px] sm:right-4" suppressHydrationWarning>
           <Tooltip>
             <TooltipTrigger asChild>
               <button
                 type="submit"
                 disabled={input === ''}
                 className="size-8 bg-stocrates-dark text-stocrates-cream rounded-full hover:bg-stocrates-dark-blue disabled:opacity-50 disabled:cursor-not-allowed transition-all hover:-translate-y-0.5 active:translate-y-0 flex items-center justify-center"
+                suppressHydrationWarning
               >
                 <IconArrowElbow />
                 <span className="sr-only">Send message</span>
