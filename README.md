@@ -130,6 +130,7 @@ An educational AI-powered financial literacy platform that teaches beginners how
    - **Groq**: Sign up at [console.groq.com](https://console.groq.com) → Create API Key
    - **NewsAPI**: Sign up at [newsapi.org](https://newsapi.org) → Get API Key (100 requests/day free)
    - **Finnhub**: Sign up at [finnhub.io](https://finnhub.io) → Dashboard → API Key (60 requests/minute free)
+   - **Polygon**: Sign up at [polygon.io](https://massive.com/) → Dashboard → API Key (5 requests/minute free)
 
 4. **Clean build (if needed)**
    ```bash
