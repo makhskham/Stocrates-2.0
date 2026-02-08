@@ -6,9 +6,13 @@ import Script from 'next/script'
 
 export function TickerTape() {
   const container = useRef<HTMLDivElement>(null)
+  const scriptAdded = useRef(false)
 
   useEffect(() => {
-    if (!container.current) return
+    if (!container.current || scriptAdded.current) return
+
+    // Clear any existing content to prevent duplicates
+    container.current.innerHTML = ''
 
     const script = document.createElement('script')
     script.src =
@@ -49,13 +53,12 @@ export function TickerTape() {
     })
 
     container.current.appendChild(script)
+    scriptAdded.current = true
 
     return () => {
+      scriptAdded.current = false
       if (container.current) {
-        const scriptElement = container.current.querySelector('script')
-        if (scriptElement) {
-          container.current.removeChild(scriptElement)
-        }
+        container.current.innerHTML = ''
       }
     }
   }, [])
