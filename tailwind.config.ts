@@ -18,10 +18,28 @@ module.exports = {
     },
     extend: {
       fontFamily: {
-        sans: ['var(--font-geist-sans)'],
-        mono: ['var(--font-geist-mono)']
+        sans: ['Roboto', 'var(--font-geist-sans)', 'sans-serif'],
+        mono: ['Space Mono', 'var(--font-geist-mono)', 'monospace'],
+        title: ['Space Mono', 'monospace'],
+        body: ['Roboto', 'sans-serif'],
+        game: ['Courier New', 'monospace'] // For game-y text like UPLOAD/SAVE
       },
       colors: {
+        // Stocrates Brand Colors
+        stocrates: {
+          cream: '#fffcf0',
+          dark: '#22271e',
+          red: '#fe502d',
+          gray: '#efefef',
+          blue: '#a7dcfa',
+          'dark-blue': '#416072',
+          // Game mode colors
+          purple: '#b794f6',
+          pink: '#f472b6',
+          'game-gradient-start': '#667eea',
+          'game-gradient-end': '#f472b6'
+        },
+        // Tailwind semantic colors (mapped to Stocrates palette)
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',
