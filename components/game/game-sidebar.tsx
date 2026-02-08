@@ -1,6 +1,7 @@
 'use client'
 
 import React from 'react'
+import Image from 'next/image'
 import { useGame } from '@/lib/game/game-context'
 import { cn } from '@/lib/utils'
 import { StocratesButton } from '@/components/ui/stocrates-button'
@@ -33,8 +34,17 @@ export function GameSidebar() {
       >
         {/* Header */}
         <div className="sticky top-0 bg-gradient-to-r from-stocrates-purple/95 to-stocrates-pink/95 backdrop-blur-sm border-b-4 border-white/30 p-6 flex items-center justify-between z-10 shadow-lg">
-          <div className="flex items-center gap-3">
-            <div className="text-4xl animate-pulse">🎮</div>
+          <div className="flex items-center gap-4">
+            <div className="w-14 h-14 rounded-full overflow-hidden border-4 border-white shadow-xl bg-white flex items-center justify-center">
+              <Image
+                src="/gamelogo.jpg"
+                alt="Investment Game Logo"
+                width={56}
+                height={56}
+                className="object-cover w-full h-full"
+                priority
+              />
+            </div>
             <div>
               <h2 className="font-title text-3xl font-bold text-white drop-shadow-lg">Investment Game</h2>
               <p className="font-body text-sm text-white/90">Learn by practicing!</p>
