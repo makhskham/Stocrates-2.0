@@ -350,11 +350,12 @@ You: [Call showStockPrice for AAPL immediately - the tool will generate educatio
 For any cryptocurrency, append "USD" at the end of the ticker when using functions. For instance, "DOGE" should be "DOGEUSD".
 
 ### Tool Usage Guidelines:
-- **IMPORTANT**: When you need to show a chart, price, news, or any data visualization, call the tool IMMEDIATELY without any text before it
+- **IMPORTANT**: Only call tools when the user specifically asks about stock data, charts, prices, news, or market information
+- For greetings ("hi", "hello") or general questions about investing concepts, respond with text ONLY - do NOT call any tools
+- When a user asks about a specific stock/ticker (e.g., "show me Tesla", "what's AAPL price?"), call the tool IMMEDIATELY without text before it
 - The tool will automatically generate educational context to accompany the visualization
-- Do NOT write explanatory text before calling a tool - call the tool first, it will include the explanation
-- Only write text responses when you're NOT using any tools (e.g., answering conceptual questions)
-- If the user asks about a stock, call the appropriate tool right away - don't explain first, then call the tool
+- Do NOT write explanatory text before calling a tool when showing data - call the tool first, it includes the explanation
+- Only write text responses when you're NOT using any tools (e.g., answering conceptual questions, greetings, general advice)
 
 ### When Users Ask About Investing:
 Redirect to education: "I can't tell you what to invest in, but I can teach you how to analyze [company/sector]! Let's explore the data together so you can make informed decisions on your own."
@@ -634,8 +635,8 @@ Redirect to education: "I can't tell you what to invest in, but I can teach you 
         showStockScreener: {
           description:
             'This tool shows a generic stock screener which can be used to find new stocks based on financial or technical parameters.',
-          parameters: z.object({}),
-          generate: async function* ({}) {
+          parameters: z.object({}).nullable(),
+          generate: async function* (args = {}) {
             const toolCallId = nanoid()
 
             aiState.done({
@@ -686,8 +687,8 @@ Redirect to education: "I can't tell you what to invest in, but I can teach you 
         },
         showMarketOverview: {
           description: `This tool shows an overview of today's stock, futures, bond, and forex market performance including change values, Open, High, Low, and Close values.`,
-          parameters: z.object({}),
-          generate: async function* ({}) {
+          parameters: z.object({}).nullable(),
+          generate: async function* (args = {}) {
             const toolCallId = nanoid()
 
             aiState.done({
@@ -738,8 +739,8 @@ Redirect to education: "I can't tell you what to invest in, but I can teach you 
         },
         showMarketHeatmap: {
           description: `This tool shows a heatmap of today's stock market performance across sectors. It is preferred over showMarketOverview if asked specifically about the stock market.`,
-          parameters: z.object({}),
-          generate: async function* ({}) {
+          parameters: z.object({}).nullable(),
+          generate: async function* (args = {}) {
             const toolCallId = nanoid()
 
             aiState.done({
@@ -790,8 +791,8 @@ Redirect to education: "I can't tell you what to invest in, but I can teach you 
         },
         showETFHeatmap: {
           description: `This tool shows a heatmap of today's ETF performance across sectors and asset classes. It is preferred over showMarketOverview if asked specifically about the ETF market.`,
-          parameters: z.object({}),
-          generate: async function* ({}) {
+          parameters: z.object({}).nullable(),
+          generate: async function* (args = {}) {
             const toolCallId = nanoid()
 
             aiState.done({
@@ -842,8 +843,8 @@ Redirect to education: "I can't tell you what to invest in, but I can teach you 
         },
         showTrendingStocks: {
           description: `This tool shows the daily top trending stocks including the top five gaining, losing, and most active stocks based on today's performance`,
-          parameters: z.object({}),
-          generate: async function* ({}) {
+          parameters: z.object({}).nullable(),
+          generate: async function* (args = {}) {
             const toolCallId = nanoid()
 
             aiState.done({

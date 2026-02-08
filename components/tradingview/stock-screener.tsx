@@ -4,9 +4,10 @@ import React, { useEffect, useRef, memo } from 'react'
 
 export function StockScreener({}) {
   const container = useRef<HTMLDivElement>(null)
+  const scriptAdded = useRef(false)
 
   useEffect(() => {
-    if (!container.current) return
+    if (!container.current || scriptAdded.current) return
     const script = document.createElement('script')
     script.src =
       'https://s3.tradingview.com/external-embedding/embed-widget-screener.js'
@@ -25,10 +26,12 @@ export function StockScreener({}) {
     })
 
     container.current.appendChild(script)
+    scriptAdded.current = true
 
     return () => {
+      scriptAdded.current = false
       if (container.current) {
-        container.current.removeChild(script)
+        container.current.innerHTML = ''
       }
     }
   }, [])
