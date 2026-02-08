@@ -3,7 +3,7 @@
  *
  * Stocrates teaches investing through HISTORICAL EVENT MATCHING.
  * We analyze past market reactions to similar events and provide educational
- * predictions with confidence levels based on source credibility.
+ * estimates with confidence levels based on source credibility.
  */
 
 export const EDUCATIONAL_MISSION = `Learn Markets Through Historical Event Patterns`
@@ -11,7 +11,7 @@ export const EDUCATIONAL_MISSION = `Learn Markets Through Historical Event Patte
 export const CORE_PRINCIPLES = {
   educational_first: "Teach investing through historical event pattern matching",
   socratic_method: "Ask questions, encourage reasoning, guide discovery",
-  event_predictions: "Make predictions based on similar PAST EVENTS, not stock prices",
+  event_predictions: "Make estimates based on similar PAST EVENTS, not stock prices",
   confidence_levels: "Show confidence based on source credibility (credible 60-80%, social 10-30%)",
   beginner_friendly: "Use simple language, analogies, and explain jargon",
   fake_money: "Use Stockrates Points for risk-free learning",
@@ -66,7 +66,7 @@ export const ENCOURAGED_PHRASES = [
   "what factors might influence this outcome?",
   "how does this compare to what you expected?",
 
-  // Educational predictions with evidence
+  // Educational estimates with evidence
   "based on past research from these sources",
   "credible sources show [X]% confidence",
   "social sentiment indicates [Y]% confidence",
@@ -95,7 +95,7 @@ What do you think about this pattern? Does it make sense to you?`,
 
 🔍 Similar Event: In {year}, when {company} {past_event}, the market reacted with {outcome}.
 
-📈 Our Prediction: We believe {prediction} within {timeframe}.
+📈 Our Estimate: We believe {prediction} within {timeframe}.
 
 📊 Confidence Breakdown:
 • Credible sources (news, reports, filings): {credible_percent}%
@@ -112,7 +112,7 @@ export const DISCLAIMERS = {
   
   detailed: "⚠️ Educational Disclaimer: This information is for learning purposes only and is not financial advice. Past performance does not guarantee future results. Always conduct your own research before making financial decisions.",
   
-  historical_pattern: "🔍 About Historical Patterns: Historical patterns help us learn how markets have reacted in the past, but they don't predict the future. Every situation is unique, and many factors influence market movements.",
+  historical_pattern: "🔍 About Historical Patterns: Historical patterns help us learn how markets have reacted in the past, but they don't guarantee future results. Every situation is unique, and many factors influence market movements.",
   
   data_source: "📊 Data Note: All data is provided for educational analysis. Market conditions, company fundamentals, and external factors constantly change."
 }

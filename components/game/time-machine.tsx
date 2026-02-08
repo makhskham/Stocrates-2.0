@@ -15,8 +15,10 @@ interface TimeMachineProps {
 
 export function TimeMachine({ selectedDate, onDateChange, className }: TimeMachineProps) {
   const [isOpen, setIsOpen] = useState(false)
-  const isToday = format(selectedDate, 'yyyy-MM-dd') === format(new Date(), 'yyyy-MM-dd')
-  const isPast = selectedDate < new Date()
+  const today = new Date()
+  const isToday = format(selectedDate, 'yyyy-MM-dd') === format(today, 'yyyy-MM-dd')
+  const isPast = selectedDate < today
+  const isFuture = selectedDate > today
 
   const handleDateSelect = (date: Date | undefined) => {
     if (date) {
@@ -30,18 +32,16 @@ export function TimeMachine({ selectedDate, onDateChange, className }: TimeMachi
     setIsOpen(false)
   }
 
-  const goBackOneYear = () => {
+  const goBackOneDay = () => {
     const newDate = new Date(selectedDate)
-    newDate.setFullYear(newDate.getFullYear() - 1)
+    newDate.setDate(newDate.getDate() - 1)
     onDateChange(newDate)
   }
 
-  const goForwardOneYear = () => {
+  const goForwardOneDay = () => {
     const newDate = new Date(selectedDate)
-    newDate.setFullYear(newDate.getFullYear() + 1)
-    if (newDate <= new Date()) {
-      onDateChange(newDate)
-    }
+    newDate.setDate(newDate.getDate() + 1)
+    onDateChange(newDate)
   }
 
   return (
@@ -62,10 +62,10 @@ export function TimeMachine({ selectedDate, onDateChange, className }: TimeMachi
           <Button
             variant="ghost"
             size="sm"
-            onClick={goBackOneYear}
+            onClick={goBackOneDay}
             className="text-purple-700 dark:text-purple-300"
           >
-            ⏪ -1 Year
+            ⏪ -1 Day
           </Button>
           
           <Popover open={isOpen} onOpenChange={setIsOpen}>
@@ -86,7 +86,6 @@ export function TimeMachine({ selectedDate, onDateChange, className }: TimeMachi
                 mode="single"
                 selected={selectedDate}
                 onSelect={handleDateSelect}
-                disabled={(date) => date > new Date()}
                 initialFocus
               />
             </PopoverContent>
@@ -95,11 +94,10 @@ export function TimeMachine({ selectedDate, onDateChange, className }: TimeMachi
           <Button
             variant="ghost"
             size="sm"
-            onClick={goForwardOneYear}
-            disabled={!isPast}
-            className="text-purple-700 dark:text-purple-300 disabled:opacity-30"
+            onClick={goForwardOneDay}
+            className="text-purple-700 dark:text-purple-300"
           >
-            +1 Year ⏩
+            +1 Day ⏩
           </Button>
         </div>
 
@@ -112,6 +110,12 @@ export function TimeMachine({ selectedDate, onDateChange, className }: TimeMachi
         {isToday && (
           <div className="text-xs text-center text-blue-700 dark:text-blue-300 bg-blue-100 dark:bg-blue-900/30 rounded p-2">
             📅 You are in the present
+          </div>
+        )}
+
+        {isFuture && (
+          <div className="text-xs text-center text-amber-700 dark:text-amber-300 bg-amber-100 dark:bg-amber-900/30 rounded p-2">
+            🔮 Future view: estimates will be based on historical patterns and recent news. Coming soon.
           </div>
         )}
       </div>
