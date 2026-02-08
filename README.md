@@ -1,4 +1,4 @@
-# ?? Stocrates 2.0
+# 📊 Stocrates 2.0
 
 > **Learn Markets Through Historical Patterns**
 
@@ -10,33 +10,33 @@ An educational AI-powered financial literacy platform that teaches beginners how
 
 ---
 
-## ?? Features
+## ✨ Features
 
-### ?? AI Chat Interface
+### 💬 AI Chat Interface
 - **Conversational AI** powered by Groq (llama-3.1-70b)
 - Ask questions about stocks, markets, and financial concepts
 - Get educational responses with historical context
 
-### ?? Live Stock Data
+### 📈 Live Stock Data
 - **Real-time stock prices** and charts
 - **Interactive visualizations** with historical data
 - **Company financials** and key metrics
 - **Stock screeners** for discovery
 
-### ?? Multi-Source News Integration
+### 📰 Multi-Source News Integration
 - **NewsAPI** - 100+ news sources (Bloomberg, Reuters, WSJ, etc.)
 - **Finnhub** - Financial news and earnings reports
 - **Reddit Sentiment** - r/wallstreetbets and r/investing analysis
 - **Automatic fallback** system for uninterrupted service
 - **2-month date filtering** to ensure recent, relevant news
 
-### ?? Educational Game Mode
+### 🎮 Educational Game Mode
 - **Paper trading** with virtual "Stocrates Points"
 - **Historical time travel** - Learn from past market events
 - **Portfolio tracking** and performance analysis
 - **Risk-free learning** environment
 
-### ?? Reddit Sentiment Analysis
+### 🔍 Reddit Sentiment Analysis
 - **Automated scraping** from multiple subreddits
 - **AI-powered analysis** using GPT-4 via Groq
 - **Batch processing** for large datasets
@@ -45,7 +45,7 @@ An educational AI-powered financial literacy platform that teaches beginners how
 
 ---
 
-## ?? Quick Start
+## 🚀 Quick Start
 
 ### Prerequisites
 
@@ -86,9 +86,9 @@ An educational AI-powered financial literacy platform that teaches beginners how
    ```
    
    **Where to get API keys:**
-   - **Groq**: Sign up at [console.groq.com](https://console.groq.com) ? Create API Key
-   - **NewsAPI**: Sign up at [newsapi.org](https://newsapi.org) ? Get API Key (100 requests/day free)
-   - **Finnhub**: Sign up at [finnhub.io](https://finnhub.io) ? Dashboard ? API Key (60 requests/minute free)
+   - **Groq**: Sign up at [console.groq.com](https://console.groq.com) → Create API Key
+   - **NewsAPI**: Sign up at [newsapi.org](https://newsapi.org) → Get API Key (100 requests/day free)
+   - **Finnhub**: Sign up at [finnhub.io](https://finnhub.io) → Dashboard → API Key (60 requests/minute free)
 
 4. **Clean build (if needed)**
    ```bash
@@ -112,7 +112,7 @@ An educational AI-powered financial literacy platform that teaches beginners how
 
 ---
 
-## ?? Usage Guide
+## 📖 Usage Guide
 
 ### Basic Chat Interaction
 
@@ -147,7 +147,7 @@ The analysis results are saved to `data/reddit-analysis.json` and automatically 
 
 ---
 
-## ??? Available Scripts
+## ⚙️ Available Scripts
 
 ### Development
 - `pnpm dev` - Start development server with Turbopack
@@ -170,36 +170,36 @@ The analysis results are saved to `data/reddit-analysis.json` and automatically 
 
 ---
 
-## ?? Project Structure
+## 📁 Project Structure
 
 ```
 stocrates-nextjs/
-+-- app/                      # Next.js app directory
-�   +-- (chat)/              # Chat interface pages
-�   +-- actions.ts           # Server actions
-�   +-- layout.tsx           # Root layout
-+-- components/              # React components
-�   +-- stocks/             # Stock-related components
-�   +-- ui/                 # UI components (shadcn/ui)
-�   +-- chat.tsx            # Main chat component
-+-- lib/                     # Core library code
-�   +-- chat/               # Chat AI logic
-�   +-- game/               # Game mode logic
-�   +-- news/               # News fetching & Reddit scraping
-�   +-- reddit/             # Reddit analysis tools
-+-- scripts/                 # Utility scripts
-�   +-- scrape-reddit-multi.ts
-�   +-- analyze-reddit-batches.ts
-�   +-- scrape-reddit-with-comments.py
-+-- data/                    # Data storage
-�   +-- reddit-raw.json     # Scraped Reddit data
-�   +-- reddit-analysis.json # AI analysis results
-+-- public/                  # Static assets
+├── app/                      # Next.js app directory
+│   ├── (chat)/              # Chat interface pages
+│   ├── actions.ts           # Server actions
+│   └── layout.tsx           # Root layout
+├── components/              # React components
+│   ├── stocks/             # Stock-related components
+│   ├── ui/                 # UI components (shadcn/ui)
+│   └── chat.tsx            # Main chat component
+├── lib/                     # Core library code
+│   ├── chat/               # Chat AI logic
+│   ├── game/               # Game mode logic
+│   ├── news/               # News fetching & Reddit scraping
+│   └── reddit/             # Reddit analysis tools
+├── scripts/                 # Utility scripts
+│   ├── scrape-reddit-multi.ts
+│   ├── analyze-reddit-batches.ts
+│   └── scrape-reddit-with-comments.py
+├── data/                    # Data storage
+│   ├── reddit-raw.json     # Scraped Reddit data
+│   └── reddit-analysis.json # AI analysis results
+└── public/                  # Static assets
 ```
 
 ---
 
-## ?? Core Principles
+## 🎯 Core Principles
 
 ### Educational First
 - **Goal**: Teach concepts, not provide trading advice
@@ -212,14 +212,14 @@ stocrates-nextjs/
 - Learn from history without making predictions
 
 ### No Predictions or Recommendations
-- ? Never make buy/sell recommendations
-- ? Never predict future prices
-- ? Show historical patterns and multiple outcomes
-- ? Include disclaimers and encourage independent research
+- ❌ Never make buy/sell recommendations
+- ❌ Never predict future prices
+- ✅ Show historical patterns and multiple outcomes
+- ✅ Include disclaimers and encourage independent research
 
 ---
 
-## ?? Configuration
+## 🔧 Configuration
 
 ### News API Fallback System
 
@@ -249,7 +249,7 @@ python scripts/scrape-reddit-with-comments.py
 
 ---
 
-## ?? Contributing
+## 🤝 Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
 
@@ -261,13 +261,13 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ---
 
-## ?? License
+## 📄 License
 
 This project is licensed under the MIT License.
 
 ---
 
-## ?? Acknowledgments
+## 🙏 Acknowledgments
 
 - **Groq** - Lightning-fast AI inference
 - **NewsAPI** - Comprehensive news aggregation
@@ -277,7 +277,7 @@ This project is licensed under the MIT License.
 
 ---
 
-## ?? Support
+## 💬 Support
 
 For issues, questions, or suggestions:
 - Open an issue on [GitHub](https://github.com/makhskham/Stocrates-2.0/issues)
@@ -285,10 +285,10 @@ For issues, questions, or suggestions:
 
 ---
 
-## ?? Disclaimer
+## ⚠️ Disclaimer
 
 **Stocrates is an educational tool only.** It does not provide financial advice, investment recommendations, or trading signals. All information is for educational purposes. Always do your own research and consult with a qualified financial advisor before making investment decisions.
 
 ---
 
-Made with ?? for financial education
+Made with ❤️ for financial education
