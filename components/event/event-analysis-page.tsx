@@ -45,7 +45,8 @@ export function EventAnalysisPage() {
       // Build query parameters
       const params = new URLSearchParams()
       if (pattern) params.append('pattern', pattern)
-      if (eventType) params.append('eventType', eventType)
+      if (eventType) params.append('category', eventType)
+
 
       const queryString = params.toString()
       const url = queryString ? `/api/analyze-event?${queryString}` : '/api/analyze-event'
