@@ -4,9 +4,10 @@ import React, { useEffect, useRef, memo } from 'react'
 
 export function StockFinancials({ props: symbol }: { props: string }) {
   const container = useRef<HTMLDivElement>(null)
+  const scriptAdded = useRef(false)
 
   useEffect(() => {
-    if (!container.current) return
+    if (!container.current || scriptAdded.current) return
 
     // Clear any existing content to prevent duplicates
     container.current.innerHTML = ''
@@ -29,8 +30,10 @@ export function StockFinancials({ props: symbol }: { props: string }) {
       }`
 
     container.current.appendChild(script)
+    scriptAdded.current = true
 
     return () => {
+      scriptAdded.current = false
       if (container.current) {
         container.current.innerHTML = ''
       }

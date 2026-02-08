@@ -4,9 +4,14 @@ import React, { useEffect, useRef, memo } from 'react'
 
 export function StockNews({ props: symbol }: { props: string }) {
   const container = useRef<HTMLDivElement>(null)
+  const scriptAdded = useRef(false)
 
   useEffect(() => {
-    if (!container.current) return
+    if (!container.current || scriptAdded.current) return
+    
+    // Clear any existing content to prevent duplicates
+    container.current.innerHTML = ''
+    
     const script = document.createElement('script')
     script.src =
       'https://s3.tradingview.com/external-embedding/embed-widget-timeline.js'
@@ -25,13 +30,12 @@ export function StockNews({ props: symbol }: { props: string }) {
         }`
 
     container.current.appendChild(script)
+    scriptAdded.current = true
 
     return () => {
+      scriptAdded.current = false
       if (container.current) {
-        const scriptElement = container.current.querySelector('script')
-        if (scriptElement) {
-          container.current.removeChild(scriptElement)
-        }
+        container.current.innerHTML = ''
       }
     }
   }, [symbol])
