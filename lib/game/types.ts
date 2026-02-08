@@ -2,6 +2,14 @@
  * Game Types for Stocrates Investment Game
  */
 
+export interface InvestmentFeedback {
+  reasoning: string
+  historicalContext: string
+  learningPoints: string[]
+  riskLevel: 'low' | 'medium' | 'high'
+  marketCondition: string
+}
+
 export interface Investment {
   id: string
   symbol: string
@@ -14,6 +22,7 @@ export interface Investment {
   currentValue?: number
   profitLoss?: number
   profitLossPercentage?: number
+  feedback?: InvestmentFeedback
 }
 
 export interface Portfolio {

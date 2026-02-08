@@ -3,7 +3,7 @@
 import React from 'react'
 import { useGame } from '@/lib/game/game-context'
 import { Button } from '@/components/ui/button'
-import { Trash2, TrendingUp, TrendingDown, Briefcase } from 'lucide-react'
+import { Trash2, TrendingUp, TrendingDown, Briefcase, Lightbulb, AlertTriangle, Shield } from 'lucide-react'
 import { format } from 'date-fns'
 
 export function PortfolioView() {
@@ -102,8 +102,8 @@ export function PortfolioView() {
 
               {investment.currentPrice && (
                 <div className={`flex items-center gap-2 p-2 rounded ${
-                  isProfit 
-                    ? 'bg-green-50 dark:bg-green-950/30 text-green-700 dark:text-green-400' 
+                  isProfit
+                    ? 'bg-green-50 dark:bg-green-950/30 text-green-700 dark:text-green-400'
                     : 'bg-red-50 dark:bg-red-950/30 text-red-700 dark:text-red-400'
                 }`}>
                   {isProfit ? (
@@ -114,6 +114,61 @@ export function PortfolioView() {
                   <div className="flex-1 text-sm font-semibold">
                     {isProfit ? '+' : ''}{profitLoss.toFixed(2)} points
                     ({isProfit ? '+' : ''}{profitLossPercentage.toFixed(2)}%)
+                  </div>
+                </div>
+              )}
+
+              {/* Educational Feedback */}
+              {investment.feedback && (
+                <div className="mt-3 space-y-2">
+                  <div className="flex items-center gap-2 text-xs font-semibold text-stocrates-dark">
+                    <Lightbulb className="h-4 w-4" />
+                    <span>Educational Insights</span>
+                  </div>
+
+                  {/* Risk Level Badge */}
+                  <div className={`inline-flex items-center gap-1.5 px-2 py-1 rounded-full text-xs font-medium ${
+                    investment.feedback.riskLevel === 'high'
+                      ? 'bg-red-100 dark:bg-red-950/30 text-red-700 dark:text-red-400'
+                      : investment.feedback.riskLevel === 'medium'
+                      ? 'bg-yellow-100 dark:bg-yellow-950/30 text-yellow-700 dark:text-yellow-400'
+                      : 'bg-green-100 dark:bg-green-950/30 text-green-700 dark:text-green-400'
+                  }`}>
+                    {investment.feedback.riskLevel === 'high' ? (
+                      <AlertTriangle className="h-3 w-3" />
+                    ) : (
+                      <Shield className="h-3 w-3" />
+                    )}
+                    {investment.feedback.riskLevel.toUpperCase()} RISK
+                  </div>
+
+                  {/* Reasoning */}
+                  <div className="bg-blue-50 dark:bg-blue-950/30 border border-blue-200 dark:border-blue-800 rounded p-2 text-xs">
+                    <p className="text-blue-900 dark:text-blue-100">
+                      <strong>💭 Your Decision:</strong> {investment.feedback.reasoning}
+                    </p>
+                  </div>
+
+                  {/* Historical Context */}
+                  <div className="bg-purple-50 dark:bg-purple-950/30 border border-purple-200 dark:border-purple-800 rounded p-2 text-xs">
+                    <p className="text-purple-900 dark:text-purple-100">
+                      <strong>📚 Historical Context:</strong> {investment.feedback.historicalContext}
+                    </p>
+                  </div>
+
+                  {/* Learning Points */}
+                  <div className="bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-800 rounded p-2 text-xs space-y-1">
+                    <p className="font-semibold text-amber-900 dark:text-amber-100">🎓 Key Learning Points:</p>
+                    {investment.feedback.learningPoints.map((point, idx) => (
+                      <p key={idx} className="text-amber-900 dark:text-amber-100 pl-2">
+                        • {point}
+                      </p>
+                    ))}
+                  </div>
+
+                  {/* Market Condition */}
+                  <div className="text-xs text-muted-foreground italic">
+                    📊 {investment.feedback.marketCondition}
                   </div>
                 </div>
               )}

@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import { NextRequest } from 'next/server';
 import fs from 'fs';
 import path from 'path';
 
@@ -20,12 +21,29 @@ function mean(values: number[]) {
   return values.reduce((s, v) => s + v, 0) / values.length;
 }
 
-export async function GET() {
+export async function GET(request: NextRequest) {
   const eventsPath = path.join(process.cwd(), 'lib', 'mock-events.json');
   const raw = fs.readFileSync(eventsPath, 'utf8');
-  const events: EventItem[] = JSON.parse(raw);
+  const allEvents: EventItem[] = JSON.parse(raw);
+
+  // Get pattern from query parameters
+  const searchParams = request.nextUrl.searchParams;
+  const pattern = searchParams.get('pattern');
+
+  // Filter events by pattern if provided
+  const events = pattern
+    ? allEvents.filter(e => e.pattern === pattern)
+    : allEvents;
 
   const count = events.length;
+
+  // Return error if no events found for the pattern
+  if (count === 0 && pattern) {
+    return NextResponse.json({
+      error: `No events found for pattern: ${pattern}`,
+      count: 0
+    }, { status: 404 });
+  }
 
   const avgMove = mean(events.map((e) => e.movePercent));
 

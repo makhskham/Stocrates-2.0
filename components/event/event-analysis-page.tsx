@@ -32,20 +32,20 @@ export function EventAnalysisPage() {
   const [analysisData, setAnalysisData] = useState<AnalysisData | null>(null)
   const [error, setError] = useState<string | null>(null)
 
-  const handleAnalyze = async () => {
+  const handleAnalyze = async (pattern: string) => {
     setIsLoading(true)
     setError(null)
 
     try {
-      const response = await fetch('/api/analyze-event')
-      
+      const response = await fetch(`/api/analyze-event?pattern=${encodeURIComponent(pattern)}`)
+
       if (!response.ok) {
         throw new Error(`Failed to fetch data: ${response.statusText}`)
       }
 
       const data = await response.json()
       setAnalysisData(data)
-      toast.success('✅ Analysis complete! Review the results below.')
+      toast.success(`✅ Analysis complete for ${pattern} pattern! Review the results below.`)
     } catch (err) {
       const errorMessage = err instanceof Error ? err.message : 'Unknown error occurred'
       setError(errorMessage)

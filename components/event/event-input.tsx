@@ -6,7 +6,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 
 interface EventInputProps {
-  onAnalyze: () => void
+  onAnalyze: (pattern: string) => void
   isLoading: boolean
 }
 
@@ -23,7 +23,7 @@ export function EventInput({ onAnalyze, isLoading }: EventInputProps) {
 
   const handleAnalyze = () => {
     if (selectedEvent) {
-      onAnalyze()
+      onAnalyze(selectedEvent)
     }
   }
 

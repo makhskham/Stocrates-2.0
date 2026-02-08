@@ -2,6 +2,7 @@
 
 import React, { createContext, useContext, useState, useCallback } from 'react'
 import { GameState, Investment, INITIAL_STOCKRATES_POINTS } from './types'
+import { generateInvestmentFeedback } from './investment-feedback'
 
 interface GameContextType {
   gameState: GameState
@@ -51,9 +52,20 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
 
   const addInvestment = useCallback((investment: Omit<Investment, 'id'>) => {
     setGameState(prev => {
+      // Generate educational feedback for this investment
+      const feedback = generateInvestmentFeedback({
+        symbol: investment.symbol,
+        companyName: investment.companyName,
+        amount: investment.amount,
+        purchasePrice: investment.purchasePrice,
+        availablePoints: prev.stockratesPoints,
+        portfolioSize: prev.portfolio.investments.length
+      })
+
       const newInvestment: Investment = {
         ...investment,
-        id: `inv_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`
+        id: `inv_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
+        feedback
       }
 
       const newStockratesPoints = prev.stockratesPoints - investment.amount

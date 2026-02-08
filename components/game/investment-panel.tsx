@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useState, useMemo } from 'react'
 import { useGame } from '@/lib/game/game-context'
 import { AVAILABLE_STOCKS } from '@/lib/game/types'
 import { Button } from '@/components/ui/button'
@@ -13,7 +13,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
-import { TrendingUp, AlertCircle } from 'lucide-react'
+import { TrendingUp, AlertCircle, Lightbulb } from 'lucide-react'
+import { generateInvestmentFeedback } from '@/lib/game/investment-feedback'
 
 export function InvestmentPanel() {
   const { gameState, addInvestment } = useGame()
@@ -90,6 +91,27 @@ export function InvestmentPanel() {
   const currentPrice = selectedStock ? getCurrentPrice(selectedStock) : 0
   const estimatedShares = amount && selectedStock ? parseFloat(amount) / currentPrice : 0
 
+  // Generate preview feedback
+  const previewFeedback = useMemo(() => {
+    if (!selectedStock || !amount || isNaN(parseFloat(amount)) || parseFloat(amount) <= 0) {
+      return null
+    }
+
+    const investAmount = parseFloat(amount)
+    if (investAmount > gameState.stockratesPoints) {
+      return null
+    }
+
+    return generateInvestmentFeedback({
+      symbol: selectedStock,
+      companyName: selectedStockInfo?.name || selectedStock,
+      amount: investAmount,
+      purchasePrice: currentPrice,
+      availablePoints: gameState.stockratesPoints,
+      portfolioSize: gameState.portfolio.investments.length
+    })
+  }, [selectedStock, amount, gameState.stockratesPoints, gameState.portfolio.investments.length, selectedStockInfo, currentPrice])
+
   return (
     <div className="space-y-4">
       <div className="bg-stocrates-blue/30 rounded-lg p-5">
@@ -153,6 +175,36 @@ export function InvestmentPanel() {
               <span className="font-semibold text-green-700 dark:text-green-400">
                 {estimatedShares.toFixed(4)}
               </span>
+            </div>
+          </div>
+        )}
+
+        {/* Preview Feedback */}
+        {previewFeedback && (
+          <div className="bg-blue-50 dark:bg-blue-950/30 border border-blue-200 dark:border-blue-800 rounded-lg p-3 space-y-2">
+            <div className="flex items-center gap-2 text-sm font-semibold text-blue-900 dark:text-blue-100">
+              <Lightbulb className="h-4 w-4" />
+              <span>Investment Preview</span>
+            </div>
+
+            <div className={`inline-flex items-center gap-1.5 px-2 py-1 rounded-full text-xs font-medium ${
+              previewFeedback.riskLevel === 'high'
+                ? 'bg-red-100 dark:bg-red-950/30 text-red-700 dark:text-red-400'
+                : previewFeedback.riskLevel === 'medium'
+                ? 'bg-yellow-100 dark:bg-yellow-950/30 text-yellow-700 dark:text-yellow-400'
+                : 'bg-green-100 dark:bg-green-950/30 text-green-700 dark:text-green-400'
+            }`}>
+              {previewFeedback.riskLevel.toUpperCase()} RISK
+            </div>
+
+            <p className="text-xs text-blue-900 dark:text-blue-100">
+              {previewFeedback.reasoning}
+            </p>
+
+            <div className="text-xs text-blue-700 dark:text-blue-300 space-y-1">
+              {previewFeedback.learningPoints.slice(0, 2).map((point, idx) => (
+                <p key={idx}>• {point}</p>
+              ))}
             </div>
           </div>
         )}
