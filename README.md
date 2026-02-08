@@ -5,6 +5,7 @@
 An educational AI-powered financial literacy platform that teaches beginners how markets react to real-world events using historical examples. Built with Next.js, Groq AI, and real-time market data.
 
 [![YouTube Demo](https://img.shields.io/badge/YouTube-Demo-red)](https://youtu.be/glbGpOEm5vM?si=X20v-alTEbBfH9sx)
+
 ![Next.js](https://img.shields.io/badge/Next.js-16.1.6-black)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.5.2-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
