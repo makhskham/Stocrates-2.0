@@ -1,4 +1,4 @@
-# Stocrates 2.0
+# Stocrates
 
 > **Learn Markets Through Historical Patterns**
 
@@ -100,8 +100,8 @@ An educational AI-powered financial literacy platform that teaches beginners how
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/makhskham/Stocrates-2.0.git
-   cd Stocrates-2.0
+   git clone https://github.com/makhskham/Stocrates.git
+   cd Stocrates
    ```
 
 2. **Install dependencies**
@@ -350,7 +350,7 @@ This project is licensed under the MIT License.
 ## Support
 
 For issues, questions, or suggestions:
-- Open an issue on [GitHub](https://github.com/makhskham/Stocrates-2.0/issues)
+- Open an issue on [GitHub](https://github.com/makhskham/Stocrates/issues)
 - Check the documentation files in the repository
 
 ---
