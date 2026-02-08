@@ -32,7 +32,11 @@ export function EventAnalysisPage() {
   const [analysisData, setAnalysisData] = useState<AnalysisData | null>(null)
   const [error, setError] = useState<string | null>(null)
 
+<<<<<<< HEAD
   const handleAnalyze = async (pattern: string, eventType?: string) => {
+=======
+  const handleAnalyze = async (pattern?: string, eventType?: string) => {
+>>>>>>> sura-branch
     setIsLoading(true)
     setError(null)
 
@@ -42,22 +46,55 @@ export function EventAnalysisPage() {
       if (pattern) params.append('pattern', pattern)
       if (eventType) params.append('eventType', eventType)
 
+<<<<<<< HEAD
       const response = await fetch(`/api/analyze-event?${params.toString()}`)
+=======
+      const queryString = params.toString()
+      const url = queryString ? `/api/analyze-event?${queryString}` : '/api/analyze-event'
+      
+      console.log('Fetching:', url) // Debug log
+      
+      const response = await fetch(url)
+>>>>>>> sura-branch
 
       if (!response.ok) {
+        // Try to get error message from response
+        const errorData = await response.json().catch(() => null)
+        if (errorData?.error) {
+          throw new Error(errorData.error)
+        }
         throw new Error(`Failed to fetch data: ${response.statusText}`)
       }
 
       const data = await response.json()
+      
+      // Check if we got any events
+      if (data.count === 0) {
+        const filters = []
+        if (pattern) filters.push(`pattern: ${pattern}`)
+        if (eventType) filters.push(`event type: ${eventType}`)
+        const filterText = filters.length > 0 ? ` for ${filters.join(' and ')}` : ''
+        toast.error(`❌ No events found${filterText}. Try different filters or "Show All".`)
+        setAnalysisData(null)
+        setError(`No events found${filterText}`)
+        return
+      }
+
       setAnalysisData(data)
 
       // Build success message
       const filters = []
       if (pattern) filters.push(`${pattern} pattern`)
       if (eventType) filters.push(`${eventType} events`)
+<<<<<<< HEAD
       const filterText = filters.join(' + ')
 
       toast.success(`✅ Analysis complete for ${filterText}! Review the results below.`)
+=======
+      const filterText = filters.length > 0 ? ` for ${filters.join(' + ')}` : ''
+
+      toast.success(`✅ Found ${data.count} events${filterText}! Review the results below.`)
+>>>>>>> sura-branch
     } catch (err) {
       const errorMessage = err instanceof Error ? err.message : 'Unknown error occurred'
       setError(errorMessage)
@@ -83,6 +120,9 @@ export function EventAnalysisPage() {
         <div className="mb-6 p-4 bg-red-50 dark:bg-red-950 border border-red-200 dark:border-red-800 rounded-lg">
           <p className="text-sm text-red-900 dark:text-red-100">
             <strong>Error:</strong> {error}
+          </p>
+          <p className="text-xs text-red-800 dark:text-red-200 mt-2">
+            Try clicking "Show All" to see all available events, or select different filters.
           </p>
         </div>
       )}
