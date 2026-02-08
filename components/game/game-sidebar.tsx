@@ -66,6 +66,11 @@ export function GameSidebar() {
             <div className="absolute w-4 h-4 rounded-full border-3 border-stocrates-dark bg-stocrates-blue -top-2 -right-2 shadow-md" />
             <div className="absolute w-4 h-4 rounded-full border-3 border-stocrates-dark bg-stocrates-blue -bottom-2 -left-2 shadow-md" />
             <div className="absolute w-4 h-4 rounded-full border-3 border-stocrates-dark bg-stocrates-blue -bottom-2 -right-2 shadow-md" />
+            {/* Mid-point circles */}
+            <div className="absolute w-3 h-3 rounded-full border-2 border-stocrates-dark bg-stocrates-cream -top-1.5 left-1/2 -translate-x-1/2" />
+            <div className="absolute w-3 h-3 rounded-full border-2 border-stocrates-dark bg-stocrates-cream -bottom-1.5 left-1/2 -translate-x-1/2" />
+            <div className="absolute w-3 h-3 rounded-full border-2 border-stocrates-dark bg-stocrates-cream -left-1.5 top-1/2 -translate-y-1/2" />
+            <div className="absolute w-3 h-3 rounded-full border-2 border-stocrates-dark bg-stocrates-cream -right-1.5 top-1/2 -translate-y-1/2" />
 
             <div className="flex items-center justify-between">
               <div>
@@ -131,6 +136,11 @@ export function GameSidebar() {
             <div className="absolute w-3 h-3 rounded-full border-3 border-stocrates-dark bg-stocrates-blue -top-1.5 -right-1.5" />
             <div className="absolute w-3 h-3 rounded-full border-3 border-stocrates-dark bg-stocrates-blue -bottom-1.5 -left-1.5" />
             <div className="absolute w-3 h-3 rounded-full border-3 border-stocrates-dark bg-stocrates-blue -bottom-1.5 -right-1.5" />
+            {/* Small mid-point circles */}
+            <div className="absolute w-2 h-2 rounded-full border border-stocrates-dark bg-stocrates-cream -top-1 left-1/2 -translate-x-1/2" />
+            <div className="absolute w-2 h-2 rounded-full border border-stocrates-dark bg-stocrates-cream -bottom-1 left-1/2 -translate-x-1/2" />
+            <div className="absolute w-2 h-2 rounded-full border border-stocrates-dark bg-stocrates-cream -left-1 top-1/2 -translate-y-1/2" />
+            <div className="absolute w-2 h-2 rounded-full border border-stocrates-dark bg-stocrates-cream -right-1 top-1/2 -translate-y-1/2" />
 
             <p className="font-body text-xs text-stocrates-dark">
               <strong className="font-title">📚 Educational Game:</strong> This is a learning tool using fake money.
