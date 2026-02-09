@@ -1,5 +1,7 @@
 # Stocrates
 
+![Stocrates Logo](logo.jpg)
+
 > **Proven Past, Prepared Future**
 
 An educational AI-powered financial literacy platform that teaches beginners how markets react to real-world events using historical examples. Built with Next.js, Groq AI, and real-time market data.
@@ -32,7 +34,7 @@ An educational AI-powered financial literacy platform that teaches beginners how
 *Track your investments and see real-time performance with detailed analytics*
 
 ### Transparency & Confidence Levels
-![Transparency](imgs/transparency.png)
+![Transparency Dashboard](imgs/transparency.png)
 *Visual confidence indicators showing source credibility and social sentiment analysis*
 
 ### Event Impact Analyzer
