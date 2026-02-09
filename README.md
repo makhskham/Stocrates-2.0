@@ -4,6 +4,8 @@
 
 An educational AI-powered financial literacy platform that teaches beginners how markets react to real-world events using historical examples. Built with Next.js, Groq AI, and real-time market data.
 
+[![YouTube Demo](https://img.shields.io/badge/YouTube-Demo-red)](https://youtu.be/glbGpOEm5vM?si=X20v-alTEbBfH9sx)
+
 ![Next.js](https://img.shields.io/badge/Next.js-16.1.6-black)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.5.2-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
@@ -16,6 +18,30 @@ An educational AI-powered financial literacy platform that teaches beginners how
 - **[Educational Approach](./EDUCATIONAL_APPROACH.md)** - Our philosophy on teaching financial literacy
 - **[Design System](./DESIGN_SYSTEM.md)** - UI/UX guidelines and component documentation
 - **[API Fallback System](./API_FALLBACK_SYSTEM.md)** - How we ensure uninterrupted service
+
+---
+
+## Demo
+
+### Homepage
+![Homepage](imgs/homepage.png)
+*The main interface featuring AI chat, live market data, and educational resources*
+
+### Portfolio View
+![Portfolio](imgs/portfolio.png)
+*Track your investments and see real-time performance with detailed analytics*
+
+### Transparency & Confidence Levels
+![Transparency](imgs/transparency.png)
+*Visual confidence indicators showing source credibility and social sentiment analysis*
+
+### Event Impact Analyzer
+![Event Impact](imgs/eventimpact.png)
+*Analyze how historical events affected stock prices with pattern matching*
+
+### Investment Game
+![Investment Game](imgs/investmentgame.png)
+*Time-travel to the past and practice investing with risk-free Stocrates Points*
 
 ---
 
