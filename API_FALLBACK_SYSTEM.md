@@ -23,7 +23,7 @@ Stocrates now has an **intelligent API fallback system** that automatically swit
 - **Rate Limit**: ~60 requests/minute
 - **Credibility Weight**: 20-30%
 
-## 🔧 How It Works
+## How It Works
 
 ### Automatic Fallback Flow
 
